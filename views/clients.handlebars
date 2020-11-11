@@ -14,8 +14,8 @@
         </tr>
     </thead>
     <tbody>
-            {{#each Client}}
-            {{#if wants_follow_up}}
+            {{#each clients}}
+            {{!-- {{#if wants_follow_up}} --}}
 
         <tr>
             <th scope="row">{{id}}</th>
@@ -28,7 +28,7 @@
             {{!-- //need to reference agent name // --}}
             <td>{{agent_id}}</td>
         </tr>
-         {{/if}}
+         {{!-- {{/if}} --}}
          {{/each}}
     </tbody>
 </table>
