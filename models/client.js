@@ -23,8 +23,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     phone: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     gender: {
       type: DataTypes.STRING,
@@ -51,14 +51,19 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
-  Client.associate = function(models) {
     models.Client.belongsTo(models.Company, {
       foreignKey: {
         allowNull: false
       }
     });
   };
+  // Client.associate = function(models) {
+  //   models.Client.belongsTo(models.Company, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
   return Client;
 };
 
