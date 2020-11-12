@@ -29,11 +29,67 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
+
+  
+  // route to display all clients of a specific agent
   app.get("/clients", (req, res) => {
-    db.Client.findAll({}).then(function(dbClient) {
-      console.log(dbClient)
-      res.render("clients", {
-        clients: dbClient[0].dataValues
+    // const currentAgentId = "";
+    db.Client.findAll({
+      // where: {
+      //   AgentId: currentAgentId
+      // }
+    }).then(function(dbClient) {
+      const clients = [];
+      for(let i = 0; i < dbClient.length; i++) {
+        clients.push(dbClient[i].dataValues)
+      };
+      res.render("clients", { clients: clients })
+    });
+  });
+
+  // route to display all clients of a specific company
+  app.get("/company-clients", (req, res) => {
+    // const currentCompanyId = "";
+    db.Client.findAll({
+      // where: {
+      //   CompanyId: currentCompanyId
+      // }
+    }).then(function(dbClient) {
+      const clients = [];
+      for(let i = 0; i < dbClient.length; i++) {
+        clients.push(dbClient[i].dataValues)
+      };
+      res.render("clients", { clients: clients })
+    });
+  });
+
+  // route to a specific client and there comments
+  app.get("/clients/:id", (req, res) => {
+    db.Client.findOne({
+      where: {
+        id: req.params.id
+    },
+      include: [{
+        model: db.Comment,
+        where: {
+          ClientId: req.params.id
+        }
+      }]
+    }).then(function(dbClient) {
+      const comments = [];
+      for(let i = 0; i < dbClient.dataValues.Comments.length; i++) {
+        comments.push(dbClient.dataValues.Comments[i].dataValues)
+      };
+      res.render("currentlead", { 
+        id: dbClient.id,
+        first_name: dbClient.first_name,
+        last_name: dbClient.last_name,
+        email: dbClient.email,
+        phone: dbClient.phone,
+        gender: dbClient.gender,
+        wants_follow_up: dbClient.wants_follow_up,
+        last_follow_up: dbClient.last_follow_up,
+        comments: comments 
       })
     });
   });
