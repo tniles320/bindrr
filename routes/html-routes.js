@@ -17,7 +17,7 @@ module.exports = function(app) {
 
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
-    if (req.user) {
+    if (req.agent) {
       res.redirect("/members");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
@@ -29,6 +29,22 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
+
+  app.get("/agents", (req, res) => {
+    // const currentAgentId = "";
+    db.Agent.findAll({
+      // where: {
+      //   id: currentAgentId
+      // }
+    }).then(function(dbAgent) {
+      const agents = [];
+      for(let i = 0; i < dbAgent.length; i++) {
+        agents.push(dbAgent[i].dataValues)
+      };
+      res.json(agents)
+      // res.render("clients", { clients: clients })
+    });
+  });
 
   
   // route to display all clients of a specific agent
