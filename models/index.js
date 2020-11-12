@@ -33,4 +33,14 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// Setting foreign keys for models
+db.Company.hasMany(db.Agent);
+db.Company.hasMany(db.Client);
+db.Agent.belongsTo(db.Company);
+db.Agent.hasMany(db.Client);
+db.Client.belongsTo(db.Company);
+db.Client.belongsTo(db.Agent);
+db.Client.hasMany(db.Comment);
+db.Comment.belongsTo(db.Client, { onDelete: "CASCADE" });
+
 module.exports = db;

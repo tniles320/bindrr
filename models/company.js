@@ -8,12 +8,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  Company.associate = function(models) {
-    models.Company.hasMany(models.Agent);
-    models.Company.hasMany(models.Client);
-  };
-  // Company.associate = function(models) {
-  //   models.Company.hasMany(models.Client);
-  // };
   return Company;
 };

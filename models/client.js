@@ -42,28 +42,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     }
   });
-  Client.associate = function(models) {
-    models.Client.hasMany(models.Comment);
-  };
-  Client.associate = function(models) {
-    models.Client.belongsTo(models.Agent, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    models.Client.belongsTo(models.Company, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-  // Client.associate = function(models) {
-  //   models.Client.belongsTo(models.Company, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
   return Client;
 };
 

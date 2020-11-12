@@ -12,14 +12,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
-  Comment.associate = function(models) {
-    models.Comment.belongsTo(models.Client, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
   return Comment;
 };
 
