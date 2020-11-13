@@ -3,6 +3,41 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function(app) {
+
+  //test get route
+  app.get("/api/companies", (req, res) => {
+    db.Company.findAll({}).then(function(dbCompany) {
+      res.json(dbCompany);
+    });
+  });
+  app.get("/api/agents", (req, res) => {
+    db.Agent.findAll({}).then(function(dbAgent) {
+      res.json(dbAgent);
+    });
+  });
+  app.get("/api/clients", (req, res) => {
+    db.Client.findAll({}).then(function(dbClient) {
+      res.json(dbClient);
+    });
+  });
+  app.get("/api/comments", (req, res) => {
+    db.Comment.findAll({}).then(function(dbComment) {
+      res.json(dbComment);
+    });
+  });
+  // test post route
+  app.post("/api/agents", function(req, res) {
+    db.Agent.create({
+      first_name : req.body.first_name,
+      last_name : req.body.last_name,
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password
+    }).then(function(dbAgent) {
+      res.json(dbAgent);
+    });
+  });
+
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
