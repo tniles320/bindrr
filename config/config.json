@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "costume88",
     "database": "property_agentsDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
