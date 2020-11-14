@@ -25,6 +25,8 @@ module.exports = function(app) {
       res.json(dbComment);
     });
   });
+
+  /*
   // test post route
   app.post("/api/agents", function(req, res) {
     db.Agent.create({
@@ -37,11 +39,13 @@ module.exports = function(app) {
       res.json(dbAgent);
     });
   });
+  */
 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
+    console.log(req)
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
@@ -53,9 +57,12 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    db.User.create({
+    db.Agent.create({
+      first_name : req.body.first_name,
+      last_name : req.body.last_name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      CompanyId: req.body.CompanyId
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -73,15 +80,15 @@ module.exports = function(app) {
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
-    if (!req.user) {
+    if (!req.agent) {
       // The user is not logged in, send back an empty object
       res.json({});
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        email: req.user.email,
-        id: req.user.id
+        email: req.agent.email,
+        id: req.agent.id
       });
     }
   });
