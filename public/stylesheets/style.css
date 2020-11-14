@@ -1,4 +1,45 @@
-form.signup,
-form.login {
-  margin-top: 50px;
+/* JACKIES NOTES SORRY KIND OF THE MOST CONVIENIENT PLACE FOR THEM AT THE MOMENT
+Think smooth sleek user friendly 
+User can see everything they need from the website on one page from the beginning
+ and nothing should be jumbled together*/
+
+/* Ideas for color palettes is something bright and inviting that highlights
+the sites different functions and draws the users attention
+SO FAR tied between a bright monochromatic look or really bright electric colors
+also like the idea of having one central bold color following the user throughout the site
+similar to the site COPPER inspiration for this site!!*/
+
+/* LOGO DESIGN IS ON FIGMA WILL BE ADDED AS SOON AS THE REST OF THE SITE IS READY FOR IT */
+
+/* LANDING PAGE (INDEX) STYING */
+.title{
+  font-family: 'roboto mono', monospace;
 }
+.welcome{
+  text-align: center !important;
+}
+
+/* BOARD STYLING */
+body {
+      background-color: #fafafa ;
+    }
+.new {
+  height: 4000px;
+}
+.right {
+  letter-spacing: 10px;
+  margin-right: 15%;
+}
+.title2{
+  font-family: 'Roboto Mono', monospace;
+  margin-left: 10%;
+}
+.card{
+  padding: 3%;
+}
+footer{
+  margin-top: 100%;
+}
+/* END OF DASH STYLING */
+
+/* Footer */
