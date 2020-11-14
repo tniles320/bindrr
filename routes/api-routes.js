@@ -15,11 +15,7 @@ module.exports = function(app) {
       res.json(dbAgent);
     });
   });
-  app.get("/api/clients", (req, res) => {
-    db.Client.findAll({}).then(function(dbClient) {
-      res.json(dbClient);
-    });
-  });
+  
   app.get("/api/comments", (req, res) => {
     db.Comment.findAll({}).then(function(dbComment) {
       res.json(dbComment);
@@ -45,7 +41,6 @@ module.exports = function(app) {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
-    console.log(req)
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
@@ -78,17 +73,35 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
+  app.get("/api/clients", (req, res) => { 
+    if(req.user){
+      db.Client.findAll({
+        where: {
+          AgentId: req.user.id
+        }
+      }).then(function(dbClient) {
+        res.json(dbClient);
+      });
+    } else {
+      res.status(400).json({
+        forbidden : true
+      })
+    }
+ 
+  });
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
-    if (!req.agent) {
+    if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        email: req.agent.email,
-        id: req.agent.id
+        email: req.user.email,
+        id: req.user.id,
+        CompanyId: req.user.CompanyId
       });
     }
   });
