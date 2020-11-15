@@ -11,6 +11,7 @@ module.exports = function(app) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/members");
+      // res.render("currentlead", {})
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
@@ -18,7 +19,7 @@ module.exports = function(app) {
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.agent) {
-      res.redirect("/members");
+      res.redirect("/clients");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
@@ -31,52 +32,55 @@ module.exports = function(app) {
 
 
   app.get("/agents", (req, res) => {
-    // const currentAgentId = "";
-    db.Agent.findAll({
-      // where: {
-      //   id: currentAgentId
-      // }
-    }).then(function(dbAgent) {
-      const agents = [];
-      for(let i = 0; i < dbAgent.length; i++) {
-        agents.push(dbAgent[i].dataValues)
-      };
-      res.json(agents)
-      // res.render("clients", { clients: clients })
-    });
+    if(req.user) {
+      db.Agent.findAll({
+        where: {
+          CompanyId: req.user.CompanyId
+        }
+      }).then(function(dbAgent) {
+        const agents = [];
+        for(let i = 0; i < dbAgent.length; i++) {
+          agents.push(dbAgent[i].dataValues)
+        };
+        res.json(agents)
+        // res.render("clients", { clients: clients })
+      });
+    }
   });
 
   
   // route to display all clients of a specific agent
   app.get("/clients", (req, res) => {
-    // const currentAgentId = "";
-    db.Client.findAll({
-      // where: {
-      //   AgentId: currentAgentId
-      // }
-    }).then(function(dbClient) {
-      const clients = [];
-      for(let i = 0; i < dbClient.length; i++) {
-        clients.push(dbClient[i].dataValues)
-      };
-      res.render("clients", { clients: clients })
-    });
+    if(req.user) {
+      db.Client.findAll({
+        where: {
+          AgentId: req.user.id
+        }
+      }).then(function(dbClient) {
+        const clients = [];
+        for(let i = 0; i < dbClient.length; i++) {
+          clients.push(dbClient[i].dataValues)
+        };
+        res.render("clients", { clients: clients })
+      });
+    }
   });
 
   // route to display all clients of a specific company
   app.get("/company-clients", (req, res) => {
-    // const currentCompanyId = "";
-    db.Client.findAll({
-      // where: {
-      //   CompanyId: currentCompanyId
-      // }
-    }).then(function(dbClient) {
-      const clients = [];
-      for(let i = 0; i < dbClient.length; i++) {
-        clients.push(dbClient[i].dataValues)
-      };
-      res.render("clients", { clients: clients })
-    });
+    if(req.user) {
+      db.Client.findAll({
+        where: {
+          CompanyId: req.user.CompanyId
+        }
+      }).then(function(dbClient) {
+        const clients = [];
+        for(let i = 0; i < dbClient.length; i++) {
+          clients.push(dbClient[i].dataValues)
+        };
+        res.render("clients", { clients: clients })
+      });
+    }
   });
 
   // route to a specific client and there comments
