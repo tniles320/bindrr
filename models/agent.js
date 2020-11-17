@@ -43,16 +43,6 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
-  Agent.associate = function(models) {
-    models.Agent.hasMany(models.Client);
-  };
-  Agent.associate = function(models) {
-    models.Agent.belongsTo(models.Company, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
   return Agent;
 };
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Passport Authentication</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1>Welcome <span class="member-name"></span></h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h2>Client Information</h2>
+              <form class="login">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">First Name</label>
+                  <input type="text" class="form-control" id="first-name" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Last Name</label>
+                  <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Gender</label>
+                  <input type="text" class="form-control" id="gender" placeholder="Gender">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Client Email</label>
+                  <input type="email" class="form-control" id="client-email" placeholder="Client Email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Phone</label>
+                  <input type="text" class="form-control" id="phone" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Follow Up</label>
+                  <input type="text" class="form-control" id="follow-up" placeholder="Follow Up">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Last Follow Up</label>
+                  <input type="text" class="form-control" id="last-follow-up" placeholder="Last Follow Up">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Comments</label>
+                  <input type="password" class="form-control" id="comments" placeholder="Comments">
+                </div>
+                <button type="submit" class="btn btn-default">Add</button>
+              </form>
+              <br />
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
+
+</body>
+
+</html>

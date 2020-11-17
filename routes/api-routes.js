@@ -15,16 +15,14 @@ module.exports = function(app) {
       res.json(dbAgent);
     });
   });
-  app.get("/api/clients", (req, res) => {
-    db.Client.findAll({}).then(function(dbClient) {
-      res.json(dbClient);
-    });
-  });
+  
   app.get("/api/comments", (req, res) => {
     db.Comment.findAll({}).then(function(dbComment) {
       res.json(dbComment);
     });
   });
+
+  /*
   // test post route
   app.post("/api/agents", function(req, res) {
     db.Agent.create({
@@ -37,6 +35,7 @@ module.exports = function(app) {
       res.json(dbAgent);
     });
   });
+  */
 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -53,9 +52,12 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    db.User.create({
+    db.Agent.create({
+      first_name : req.body.first_name,
+      last_name : req.body.last_name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      CompanyId: req.body.CompanyId
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -71,6 +73,67 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
+  app.get("/api/clients", (req, res) => { 
+    if(req.user){
+      db.Client.findAll({
+        where: {
+          AgentId: req.user.id
+        }
+      }).then(function(dbClient) {
+        res.json(dbClient);
+      });
+    } else {
+      res.status(400).json({
+        forbidden : true
+      })
+    }
+  });
+
+  app.get("/api/clients/:id", (req, res) => { 
+    if(req.user){
+      db.Client.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbClient) {
+        res.json(dbClient);
+      });
+    } else {
+      res.status(400).json({
+        forbidden : true
+      })
+    }
+  });
+  
+  app.put("/api/clients/:id", (req, res) => {
+    db.Client.update({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      gender: req.body.gender,
+      email: req.body.email,
+      phone: req.body.phone,
+    },
+    {
+      where: {
+      id: req.params.id
+    }
+    }).then(function(dbClient) {
+        res.json(dbClient)
+      })
+  });
+
+  app.post("/api/comments", (req, res) => {
+    db.Comment.create({
+      title: req.body.title,
+      author: req.body.author,
+      comment: req.body.comment,
+      ClientId: req.body.ClientId
+    })
+      .then(function(dbComment) {
+        res.json(dbComment);
+      });
+  });
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
@@ -81,7 +144,8 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        CompanyId: req.user.CompanyId
       });
     }
   });
