@@ -49,7 +49,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Follow Up</label>
-                <input type="text" id="datepicker" class="form-control" placeholder="Follow Up">
+                <input type="text" id="datepicker" class="form-control" placeholder="Follow Up"{{last_follow_up}}>
               </div>
               {{#each comments}}
                 <div class="form-group">
@@ -93,6 +93,7 @@ $(document).ready(() => {
   const emailInput = $("input#client-email");
   const genderInput = $("select#gender");
   const phoneInput = $("input#phone");
+  const followInput = $("input#datepicker")
   const commentInput = $("input#comment");
   const id = {{id}};
   //Also needs a company number/id
@@ -122,7 +123,8 @@ $(document).ready(() => {
       last_name: lastInput.val().trim(),
       gender: genderInput.val().trim(),
       email: emailInput.val().trim(),
-      phone: phoneInput.val().trim()
+      phone: phoneInput.val().trim(),
+      last_follow_up: followInput.val().trim()
     };  
     $.ajax(`/api/clients/${id}`, {
       type: "PUT",
