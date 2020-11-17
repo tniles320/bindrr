@@ -87,7 +87,51 @@ module.exports = function(app) {
         forbidden : true
       })
     }
- 
+  });
+
+  app.get("/api/clients/:id", (req, res) => { 
+    if(req.user){
+      db.Client.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbClient) {
+        res.json(dbClient);
+      });
+    } else {
+      res.status(400).json({
+        forbidden : true
+      })
+    }
+  });
+  
+  app.put("/api/clients/:id", (req, res) => {
+    db.Client.update({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      gender: req.body.gender,
+      email: req.body.email,
+      phone: req.body.phone,
+    },
+    {
+      where: {
+      id: req.params.id
+    }
+    }).then(function(dbClient) {
+        res.json(dbClient)
+      })
+  });
+
+  app.post("/api/comments", (req, res) => {
+    db.Comment.create({
+      title: req.body.title,
+      author: req.body.author,
+      comment: req.body.comment,
+      ClientId: req.body.ClientId
+    })
+      .then(function(dbComment) {
+        res.json(dbComment);
+      });
   });
 
   // Route for getting some data about our user to be used client side

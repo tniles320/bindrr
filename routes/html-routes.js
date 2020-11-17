@@ -85,32 +85,36 @@ module.exports = function(app) {
 
   // route to a specific client and there comments
   app.get("/clients/:id", (req, res) => {
-    db.Client.findOne({
-      where: {
-        id: req.params.id
-    },
-      include: [{
-        model: db.Comment,
+    if (req.user) {
+      const agentName = `${req.user.first_name} ${req.user.last_name}`
+      db.Client.findOne({
         where: {
-          ClientId: req.params.id
-        }
-      }]
-    }).then(function(dbClient) {
-      const comments = [];
-      for(let i = 0; i < dbClient.dataValues.Comments.length; i++) {
-        comments.push(dbClient.dataValues.Comments[i].dataValues)
-      };
-      res.render("currentlead", { 
-        id: dbClient.id,
-        first_name: dbClient.first_name,
-        last_name: dbClient.last_name,
-        email: dbClient.email,
-        phone: dbClient.phone,
-        gender: dbClient.gender,
-        wants_follow_up: dbClient.wants_follow_up,
-        last_follow_up: dbClient.last_follow_up,
-        comments: comments 
-      })
-    });
+          id: req.params.id
+      },
+        include: [{
+          model: db.Comment,
+          where: {
+            ClientId: req.params.id
+          }
+        }]
+      }).then(function(dbClient) {
+        const comments = [];
+        for(let i = 0; i < dbClient.dataValues.Comments.length; i++) {
+          comments.push(dbClient.dataValues.Comments[i].dataValues)
+        };
+        res.render("currentlead", { 
+          id: dbClient.id,
+          first_name: dbClient.first_name,
+          last_name: dbClient.last_name,
+          email: dbClient.email,
+          phone: dbClient.phone,
+          gender: dbClient.gender,
+          wants_follow_up: dbClient.wants_follow_up,
+          last_follow_up: dbClient.last_follow_up,
+          agent_name: agentName,
+          comments: comments
+        })
+      });
+    }
   });
 };
