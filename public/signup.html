@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Passport Authentication</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Bindrrr</title>
+   <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script> 
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
-
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Sign Up Form</h2>
-        <form class="signup">
-          <div class="form-group">
-            <label for="exampleInputCompany1">Company Number</label>
-            <input type="number" class="form-control" id="company-input" placeholder="Company Number">
+
+<header>
+
+<!--SIDE NAV-->
+<div class="row">
+  <div class="extended-content-container">
+    <h2 id="title2" class="black-text"> <img src="C:\Users\jacki\Downloads\project-2\public\assets\img\Component 3.png" style='width:5%' alt="Logo">Bindrrr</h2>
+</div>
+</div>
+<div class="extended-content-container">
+  <div class="row">
+  <div class="col s12 m9">
+    <div class="card">
+                <h2>Sign Up Form</h2>
+                <form class="signup">
+                  <div class="form-group">
+                    <label for="exampleInputCompany1">Company Number</label>
+                    <input type="number" class="form-control" id="company-input" placeholder="Company Number">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFirst1">First Name</label>
+                    <input type="text" class="form-control" id="first-input" placeholder="First Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputLast1">Last Name</label>
+                    <input type="text" class="form-control" id="last-input" placeholder="Last Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="email-input" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password-input" placeholder="Password">
+                  </div>
+                  <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                  </div>
+                  <button type="submit" class="btn btn-default light-green accent-4">Get Started!</button>
+                </form>
+                <br />
+              <p>Or Login <a href="/login">here</a></p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="exampleInputFirst1">First Name</label>
-            <input type="text" class="form-control" id="first-input" placeholder="First Name">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputLast1">Last Name</label>
-            <input type="text" class="form-control" id="last-input" placeholder="Last Name">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
-          </div>
-          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
-          </div>
-          <button type="submit" class="btn btn-default">Sign Up</button>
-        </form>
-        <br />
-        <p>Or log in <a href="/login">here</a></p>
-      </div>
-    </div>
+         
+  
+  <div class="col s12 m3">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/signup.js"></script>
-
+  </div>
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small pink">
+  <!-- Company -->
+  <div class="footer-copyright">
+    <h6> Bindrr™ 2020 Get Organized</h6>
+  </div>
+</footer>
+<script src="js/signup.js"></script>
+<script src="js/dashboard.js"></script>
 </body>
-
 </html>

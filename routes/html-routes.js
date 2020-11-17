@@ -10,7 +10,16 @@ module.exports = function(app) {
   app.get("/", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/dashboard");
+      // res.render("currentlead", {})
+    }
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+  });
+
+  app.get("/signup", (req, res) => {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/dashboard");
       // res.render("currentlead", {})
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
@@ -18,10 +27,17 @@ module.exports = function(app) {
 
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
-    if (req.agent) {
-      res.redirect("/clients");
+    if (req.user) {
+      res.redirect("/dashboard");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
+  });
+
+  app.get("/dashboard", (req, res) => {
+    if(req.user) {
+    // If the user already has an account send them to the members page
+    res.sendFile(path.join(__dirname, "../public/dashboard.html"));
+    }
   });
 
   // Here we've add our isAuthenticated middleware to this route.
@@ -93,9 +109,6 @@ module.exports = function(app) {
       },
         include: [{
           model: db.Comment,
-          where: {
-            ClientId: req.params.id
-          }
         }]
       }).then(function(dbClient) {
         const comments = [];
@@ -113,6 +126,21 @@ module.exports = function(app) {
           last_follow_up: dbClient.last_follow_up,
           agent_name: agentName,
           comments: comments
+        })
+      });
+    }
+  });
+
+  app.get("/add-client", (req, res) => {
+    if(req.user) {
+      db.Agent.findOne({
+        where: {
+          id: req.user.id
+        }
+      }).then(function(dbAgent) {
+        res.render("add-client", {
+          AgentId: dbAgent.dataValues.id,
+          CompanyId: dbAgent.dataValues.CompanyId,
         })
       });
     }

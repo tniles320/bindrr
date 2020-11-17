@@ -15,27 +15,6 @@ module.exports = function(app) {
       res.json(dbAgent);
     });
   });
-  
-  app.get("/api/comments", (req, res) => {
-    db.Comment.findAll({}).then(function(dbComment) {
-      res.json(dbComment);
-    });
-  });
-
-  /*
-  // test post route
-  app.post("/api/agents", function(req, res) {
-    db.Agent.create({
-      first_name : req.body.first_name,
-      last_name : req.body.last_name,
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password
-    }).then(function(dbAgent) {
-      res.json(dbAgent);
-    });
-  });
-  */
 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -89,6 +68,21 @@ module.exports = function(app) {
     }
   });
 
+  app.post("/api/clients", (req, res) => {
+    db.Client.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      gender: req.body.gender,
+      email: req.body.email,
+      phone: req.body.phone,
+      AgentId: req.body.AgentId,
+      CompanyId: req.body.CompanyId
+    })
+      .then(function(dbClient) {
+        res.json(dbClient);
+      });
+  });
+
   app.get("/api/clients/:id", (req, res) => { 
     if(req.user){
       db.Client.findOne({
@@ -128,6 +122,27 @@ module.exports = function(app) {
       author: req.body.author,
       comment: req.body.comment,
       ClientId: req.body.ClientId
+    })
+      .then(function(dbComment) {
+        res.json(dbComment);
+      });
+  });
+
+  app.get("/api/comments/:id", (req, res) => {
+    db.Comment.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbComment) {
+      res.json(dbComment);
+    });
+  });
+
+  app.delete("/api/comments/:id", (req, res) => {
+    db.Comment.destroy({
+      where: {
+        id: req.params.id
+      }
     })
       .then(function(dbComment) {
         res.json(dbComment);

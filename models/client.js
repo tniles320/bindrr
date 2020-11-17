@@ -39,7 +39,8 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: true
     },
     last_follow_up: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: "N/A"
     }
   });
   return Client;
