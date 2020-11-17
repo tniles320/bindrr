@@ -41,7 +41,7 @@ $(document).ready(() => {
       CompanyId: company
     })
       .then(() => {
-        window.location.replace("/agents");
+        window.location.replace("/dashboard");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
