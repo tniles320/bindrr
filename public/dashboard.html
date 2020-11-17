@@ -5,61 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Bindrrr</title>
+   <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script> 
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
             
   <!-- Custom styles -->
   <link rel="stylesheet" href="stylesheets/style.css">
 </head>
-<body class="new">
+<body>
 
 <header>
 
-<!--DIY Navbar (kinda?)-->
-<div class="right hide-on-med-and-down">
-<a class="waves-effect waves-light btn-small purple accent-3">Saved</a>
-<a class="waves-effect waves-light btn-small pink accent-3">Clients</a>
-<a class="waves-effect waves-light btn-small light-green accent-4">Documents</a>
-</div>
-
 <!--SIDE NAV-->
 <div class="row">
-<ul id="slide-out" class="sidenav">
-  <li><div class="user-view">
-    <div class="background">
-      <img src="https://ak.picdn.net/shutterstock/videos/8661895/thumb/1.jpg">
-    </div>
-    <a href="#user"><img class="circle" src="https://images.squarespace-cdn.com/content/v1/53d53c64e4b076e5e3fd36fe/1541007944915-2K7N47124610BCKJAMW4/ke17ZwdGBToddI8pDm48kAmzVESnndSkFo4VjUYj3iZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UetZcyBSe8EzOZ6neXOxaly-CFnPMrhhheFAmjlN4d47pJmyJuPnROfkv0UjH_ecUA/female-headshot_real-estate-headshots+.jpg?format=750w"></a>
-    <a href="#name"><span class="white-text name">John Doe</span></a>
-    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-  </div></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="#!">Second Link</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <div class="extended-content-container">
+    <ul id="slide-out" class="sidenav pink accent-3">
+      <li><div class="user-view">
+        <div class="background">
+          <img src="https://i.pinimg.com/564x/fa/e2/48/fae248623e7cfbe2d25d5c0b60b46255.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80"></a>
+        <a href="#name"><span class="white-text name">Female User</span></a>
+        <a href="#email"><span class="white-text email">sample4u@gmail.com</span></a>
+      </div></li>
+      <li><a class="waves-effect white-text" href="#!">My Profile</a></li>
+      <li><a class="waves-effect white-text" href="#!">Logout</a></li>
+    </ul>
+    <h2 id="title2" class="black-text"> <img src="C:\Users\jacki\Downloads\project-2\public\assets\img\Component 3.png" style='width:5%' alt="Logo">Bindrrr</h2>
+    <a href="#" data-target="slide-out" class="sidenav-trigger btn purple accent-3"><i class="material-icons">Menu</i></a>
+    <a class="waves-effect waves-light btn amber darken-3">Saved</a>
+    <a class="waves-effect waves-light btn pink accent-3">Clients</a>
+    <a class="waves-effect waves-light btn light-green accent-4">Documents</a>
 </div>
-<h2 class="title2"> <img src="C:\Users\jacki\Downloads\project-2\public\assets\img\Component 3.png" style='width:5%'; alt="Null">Bindrrr</h2>;
-<div class="container">
+</div>
+<div class="extended-content-container">
   <div class="row">
+  <div class="col s12 m9">
     <div class="card">
-     <h2> Recent Updates</h2>
-     <p>Hello World! I am filling this card up with information so we can visualize the way our information will look when the card is full of data and recent member activity.</p>
+     <h2 class="black-text"> Recent Updates</h2>
+     <p class="black-text">Hello World! I am filling this card up with information so we can visualize the way our information will look when the card is full of data and recent member activity.</p>
     </div>
-
+  </div>
+  <div class="col s12 m3">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
+    <img src="https://www.culturainteractive.com/wp-content/uploads/2016/02/Ad-Space.png" alt="ad space for sale">
+  </div>
   </div>
 </div>
 <!-- Footer -->
 <footer class="page-footer font-small pink">
   <!-- Company -->
   <div class="footer-copyright">
-    <p> Bindrr ---Get Organized 2020</p>
+    <h6> Bindrr™ 2020 Get Organized</h6>
   </div>
 </footer>
+<script src="dashboard.js"></script>
 </body>
 </html>
