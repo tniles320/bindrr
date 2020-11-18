@@ -11,5 +11,3 @@ services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS property_agentsDB;'
-after_success:
-  - mysql -e 'USE property_agentsDB; INSERT INTO companies("name") VALUES ("company1"),("company2"),("company3");'

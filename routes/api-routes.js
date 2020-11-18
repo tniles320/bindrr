@@ -149,6 +149,15 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/companies", (req, res) => {
+    db.Company.create({
+      name: req.body.name
+    })
+      .then(function(dbCompany) {
+        res.json(dbCompany);
+      });
+  });
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {

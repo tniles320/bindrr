@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/crm_style.css" type="text/css" />
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+		<title>Main</title>
+		<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/logout">
+              Logout
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <h2>Company Input</h2>
+                  <form class="login">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Company Name</label>
+                      <input type="text" class="form-control" id="company-name" placeholder="Company Name">
+                    </div>
+                      <br>
+                      <button id="add-btn" type="submit" class="btn btn-default">Add</button>
+                  </form>
+                  <br />
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+      
+      $(document).ready(() => {
+        // Getting references to our form and input
+        const addForm = $("form.login");
+        const companyInput = $("input#company-name");
+        //Also needs a company number/id
+      
+        $("#add-btn").on("click", function(event) {
+          event.preventDefault();  
+          const companyName = {
+            name: companyInput.val().trim()
+          }
+          console.log(companyName)
+          $.ajax(`/api/companies/`, {
+            type: "POST",
+            data: companyName
+          }).then(
+            function() {
+              window.location.replace(`/api/companies`);
+            }
+          )
+        });
+      });
+      
+      </script>
+    
+</body>
+</html>
