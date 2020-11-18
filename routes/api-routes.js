@@ -75,6 +75,7 @@ module.exports = function(app) {
       gender: req.body.gender,
       email: req.body.email,
       phone: req.body.phone,
+      last_follow_up: req.body.last_follow_up,
       AgentId: req.body.AgentId,
       CompanyId: req.body.CompanyId
     })
