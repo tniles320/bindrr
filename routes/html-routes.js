@@ -13,9 +13,9 @@ module.exports = function(app) {
       res.redirect("/dashboard");
       // res.render("currentlead", {})
     }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
-/*
+
   app.get("/signup", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
@@ -24,7 +24,6 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
-  */
 
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
