@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Members</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="jquery.datetimepicker.min.css" rel="stylesheet" />
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div>
+        </div>
+        <ul class="progressbar">
+          <li class="active"><strong>New Lead</strong></li>
+          <li> Application</li>
+          <li>Showing</li>
+          <li>Lease</li>
+          <li>Keys</li>
+        </ul>
+        
+        <h2>Client Information</h2>
+        <form class="login">
+          <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" class="form-control" id="first-name" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+          </div>
+
+          <div class="form-group">
+            <label for="Gender">Gender</label>
+            <select name="gender" id="gender">
+              <optgroup label="Gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="nondisclose">Preferred not to disclose</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ClientEmail">Client Email</label>
+            <input type="email" class="form-control" id="client-email" placeholder="Client Email">
+          </div>
+          <div class="form-group">
+            <label for="Phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Phone">
+          </div>
+          <div class="container2">
+              <div class="form-group-item">
+                <label for="FollowUp">Follow Up</label>
+                <input type="text" id="datepicker" class="form-control" placeholder="Follow Up">
+
+              </div>
+              
+              <div>
+
+                <div class="form-group-item">
+                  <label for="Time">Time</label>
+                  <br>
+                  <select name="time" id="time">
+                    <optgroup label="Time">
+                      <option value="8am">8:00AM</option>
+                      <option value="830am">8:30AM</option>
+                      <option value="9am">9:00AM</option>
+                      <option value="930am">9:30AM</option>
+                      <option value="10am">10:00AM</option>
+                      <option value="1030am">10:30AM</option>
+                      <option value="11am">11:00AM</option>
+                      <option value="1130am">11:30AM</option>
+                      <option value="12pm">12:00PM</option>
+                      <option value="1230pm">12:30PM</option>
+                      <option value="1pm">1:00PM</option>
+                      <option value="130">1:30PM</option>
+                      <option value="2pm">2:00PM</option>
+                      <option value="230pm">2:30PM</option>
+                      <option value="3pm">3:00PM</option>
+                      <option value="330pm">3:30PM</option>
+                      <option value="4pm">4:00PM</option>
+                      <option value="430pm">4:30PM</option>
+                      <option value="5pm">5:00PM</option>
+                      <option value="530m">5:30PM</option>
+                      <option value="6pm">6:00PM</option>
+                      <option value="6pm">6:30PM</option>
+                      <option value="7pm">7:00PM</option>
+                      <option value="730pm">7:30PM</option>
+                    </optgroup>
+                  </select>
+        </form>
+      </div>
+        <button type="button" class="btn btn-primary">Add</button>
+        <br />
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $("#datepicker").datepicker({
+        showOtherMonths: true,
+        selectOtherMonths: true
+      });
+    });
+  </script>
+</body>
+
+</html>
