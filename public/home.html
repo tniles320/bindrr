@@ -11,7 +11,6 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="stylesheets/style.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
@@ -25,10 +24,10 @@
             <h5>The only site you need to stay at the top of your game.</h5>
            <h1 class="title"> <img src="C:\Users\jacki\Downloads\project-2\public\assets\img\Component 3.png" style='width:6%; border:0'> Bindrrr</h1>
             <h5>---Get Organized Today!</h5>
-            <button class="signup btn waves-effect waves-light light-green accent-4" href="/signup"> SIGN UP
+            <button class="signup btn waves-effect waves-light light-green accent-4"> SIGN UP
               <i class="material-icons right"></i>
             </button>
-            <button class="login btn waves-effect waves-light light-green-text transparent" href="/login">LOGIN
+            <button class="login btn waves-effect waves-light light-green-text transparent">LOGIN
               <i class="material-icons right"></i>
           </div>
           </div>
@@ -38,14 +37,15 @@
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery.js"></script>
   <script>
     $(".signup").on("click", function(event) {
       event.preventDefault()
-      window.location.replace(`/signup`);
+      window.location.replace("/signup");
     })
     $(".login").on("click", function(event) {
       event.preventDefault()
-      window.location.replace(`/login`);
+      window.location.replace("/login");
     })
   </script>
 
