@@ -20,11 +20,11 @@
             <form class="login">
               <div class="form-group">
                 <label for="exampleInputEmail1">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="First Name" value="{{first_name}}">
+                <input type="text" class="form-control" id="first-name" placeholder="First Name">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Last Name" value="{{last_name}}">
+                <input type="text" class="form-control" id="last-name" placeholder="Last Name">
               </div>
               <div class="form-group">
                 <label for="gender">Gender</label>
@@ -41,30 +41,18 @@
 
               <div class="form-group">
                 <label for="client-email">Client Email</label>
-                <input type="email" class="form-control" id="client-email" placeholder="Client Email" value="{{email}}">
+                <input type="email" class="form-control" id="client-email" placeholder="Client Email">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Phone" value="{{phone}}">
+                <input type="text" class="form-control" id="phone" placeholder="Phone">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Follow Up</label>
-                <input type="text" id="datepicker" class="form-control" placeholder="Follow Up"{{last_follow_up}}>
-              </div>
-              {{#each comments}}
-                <div class="form-group">
-                  <label for="comments">Comment</label>
-                  <input type="text" class="comments form-control" placeholder="Comments" value="{{comment}}">
-                  <button data-commentid="{{this.id}}" class="delete">Delete</button>
-                </div>
-              {{/each}}
-              <div class="form-group">
-                <label for="exampleInputPassword1">New Comment</label>
-                <input type="text" id="comment" class="form-control" placeholder="Add new comment">
-                <button data-name="{{agent_name}}" id="comment-btn">Add</button>
+                <input type="text" id="datepicker" class="form-control" placeholder="Follow Up">
               </div>
                 <br>
-                <button id="update-btn" type="submit" class="btn btn-default">Update</button>
+                <button id="add-btn" type="submit" class="btn btn-default">Add</button>
             </form>
             <br />
           </div>
@@ -93,60 +81,27 @@ $(document).ready(() => {
   const emailInput = $("input#client-email");
   const genderInput = $("select#gender");
   const phoneInput = $("input#phone");
-  const followInput = $("input#datepicker")
-  const commentInput = $("input#comment");
-  const id = {{id}};
   //Also needs a company number/id
 
-  $("#comment-btn").on("click", function(event) {
+  $("#add-btn").on("click", function(event) {
     event.preventDefault();
-    const agentName = $(this).data("name")
-    const newComment = {
-      comment: commentInput.val().trim(),
-      author: agentName,
-      ClientId: id
-    };  
-    $.ajax("/api/comments", {
-      type: "POST",
-      data: newComment
-    }).then(
-      function() {
-        location.reload();
-      }
-    )
-  });
-
-  $("#update-btn").on("click", function(event) {
-    event.preventDefault();
-    const updateClient = {
+    const addClient = {
       first_name: firstInput.val().trim(),
       last_name: lastInput.val().trim(),
       gender: genderInput.val().trim(),
       email: emailInput.val().trim(),
       phone: phoneInput.val().trim(),
-      last_follow_up: followInput.val().trim()
+      AgentId: {{AgentId}},
+      CompanyId: {{CompanyId}}
     };  
-    $.ajax(`/api/clients/${id}`, {
-      type: "PUT",
-      data: updateClient
+    $.ajax(`/api/clients/`, {
+      type: "POST",
+      data: addClient
     }).then(
       function() {
-        location.reload();
+        window.location.replace(`/clients`);
       }
     )
-  });
-
-  $(".delete").on("click", function(event) {
-    event.preventDefault();
-    const commentId = $(this).data("commentid");
-    $.ajax(`/api/comments/${commentId}`, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        location.reload();
-      }
-    );
   });
 
   /*

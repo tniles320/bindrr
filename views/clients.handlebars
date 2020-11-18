@@ -1,7 +1,10 @@
 <h1>Leads</h1>
 <table class="table">
+
+    <button class="add-client">Add New Client</button>
     <thead>
         <tr>
+            <th scope="col">Update Client</th>
             <th scope="col">ID</th>
             <th scope="col">Last Name</th>
             <th scope="col">First Name</th>
@@ -18,6 +21,9 @@
             {{!-- {{#if wants_follow_up}} --}}
 
         <tr>
+            <th>
+                <button data-id="{{id}}" class="update-client">Update</button>
+            </th>
             <th scope="row">{{id}}</th>
             <td>{{last_name}}</td>
             <td>{{first_name}}</td>
@@ -32,4 +38,16 @@
          {{/each}}
     </tbody>
 </table>
+
+<script type="text/javascript">
+
+$(".add-client").on("click", function(event) {
+    window.location.replace(`/add-client`);
+});
+
+$(".update-client").on("click", function(event) {
+    const id = $(this).data("id");
+    window.location.replace(`/clients/${id}`);
+});
+</script>
 
