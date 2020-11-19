@@ -92,6 +92,10 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/add-company", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/add-company.html"));
+  });
+
   // route to a specific client and there comments
   app.get("/clients/:id", (req, res) => {
     if (req.user) {

@@ -1,66 +1,109 @@
-<nav class="navbar navbar-default">
+<nav class="navbar cst-nav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
+      <a class="navbar-brand links" href="/logout">
         Logout
+      </a>
+      <a class="navbar-brand links" href="/clients">
+        Back
       </a>
     </div>
   </div>
 </nav>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <h2>Client Information</h2>
-            <form class="login">
-              <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="First Name">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Last Name">
-              </div>
-              <div class="form-group">
-                <label for="gender">Gender</label>
-                <br>
-                <select name="gender" id="gender">
-                  <optgroup label="Gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                    <option value="nondisclose">Preferred not to disclose</option>
-                  </optgroup>
-                </select>
-              </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div>
+          <ul class="progressbar">
+            <li class="active"><strong>New Lead</strong></li>
+            <li> Application</li>
+            <li>Showing</li>
+            <li>Lease</li>
+            <li>Keys</li>
+          </ul>
+        </div>
+        
+        <div class="text-center">
+          <h2 class="client-header">Client Information</h2>
+        </div>
 
-              <div class="form-group">
-                <label for="client-email">Client Email</label>
-                <input type="email" class="form-control" id="client-email" placeholder="Client Email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Phone">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Follow Up</label>
+        <form class="login">
+          <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" class="form-control" id="first-name" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+          </div>
+
+          <div class="form-group">
+            <label for="Gender">Gender</label>
+            <select name="gender" id="gender">
+              <optgroup label="Gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="nondisclose">Preferred not to disclose</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ClientEmail">Client Email</label>
+            <input type="email" class="form-control" id="client-email" placeholder="Client Email">
+          </div>
+          <div class="form-group">
+            <label for="Phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Phone">
+          </div>
+          <div class="container2">
+              <div class="form-group-item">
+                <label for="FollowUp">Follow Up</label>
                 <input type="text" id="datepicker" class="form-control" placeholder="Follow Up">
               </div>
-                <br>
-                <button id="add-btn" type="submit" class="btn btn-default">Add</button>
-            </form>
-            <br />
+                <div class="form-group-item">
+                  <label for="Time">Time</label>
+                  <br>
+                  <select name="time" id="time">
+                    <optgroup label="Time">
+                      <option value="8am">8:00AM</option>
+                      <option value="830am">8:30AM</option>
+                      <option value="9am">9:00AM</option>
+                      <option value="930am">9:30AM</option>
+                      <option value="10am">10:00AM</option>
+                      <option value="1030am">10:30AM</option>
+                      <option value="11am">11:00AM</option>
+                      <option value="1130am">11:30AM</option>
+                      <option value="12pm">12:00PM</option>
+                      <option value="1230pm">12:30PM</option>
+                      <option value="1pm">1:00PM</option>
+                      <option value="130">1:30PM</option>
+                      <option value="2pm">2:00PM</option>
+                      <option value="230pm">2:30PM</option>
+                      <option value="3pm">3:00PM</option>
+                      <option value="330pm">3:30PM</option>
+                      <option value="4pm">4:00PM</option>
+                      <option value="430pm">4:30PM</option>
+                      <option value="5pm">5:00PM</option>
+                      <option value="530m">5:30PM</option>
+                      <option value="6pm">6:00PM</option>
+                      <option value="6pm">6:30PM</option>
+                      <option value="7pm">7:00PM</option>
+                      <option value="730pm">7:30PM</option>
+                    </optgroup>
+                  </select>
+                </div>
           </div>
-        </div>
+        </form>
       </div>
-
     </div>
-  </div>
+</div>
+<br>
+<br>
+<div class="text-center mt-3">
+  <button type="button" id="add-btn" class="btn btn-primary">Add Client</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -81,6 +124,7 @@ $(document).ready(() => {
   const emailInput = $("input#client-email");
   const genderInput = $("select#gender");
   const phoneInput = $("input#phone");
+  const dateInput = $("input#datepicker");
   //Also needs a company number/id
 
   $("#add-btn").on("click", function(event) {
@@ -91,6 +135,7 @@ $(document).ready(() => {
       gender: genderInput.val().trim(),
       email: emailInput.val().trim(),
       phone: phoneInput.val().trim(),
+      last_follow_up: dateInput.val().trim(),
       AgentId: {{AgentId}},
       CompanyId: {{CompanyId}}
     };  
@@ -103,60 +148,6 @@ $(document).ready(() => {
       }
     )
   });
-
-  /*
-  // When the add button is clicked, we validate that the form are not blank
-  addForm.on("submit", event => {
-    event.preventDefault();
-    const userData = {
-      first: firstInput.val().trim(),
-      last: lastInput.val().trim(),
-      gender: genderInput.val().trim(),
-      email: emailInput.val().trim(),
-      phone: phoneInput.val().trim()
-    };
-
-    if (!userData.first || !userData.last || !userData.gender || !userData.email || !userData.phone) {
-      return;
-    }
-    // If we have all data, run the addLead function
-    addLead(userData.first, userData.last, userData.gender, userData.email, userData.phone);
-    firstInput.val("");
-    lastInput.val("");
-    genderInput.val("");
-    emailInput.val("");
-    phoneInput.val("");
-  });
-
-  // Does a post to the add route. If successful, we are redirected to the current lead page
-  // Otherwise we log any errors
-  function addLead(first, last, gender, email, phone) {
-    $.post("/api/clients", {
-      first_name: first,
-      last_name: last,
-      email: email,
-      phone: phone,
-      gender: gender,
-      //id: req.body.id
-      //This post should go to the post route which generates a new instance of a Client.
-    })
-      .then(() => {
-        //GET the ID of this newly created lead.
-        //$.get("/api/clients/:id")
-      })
-      .then(() => {
-        //Redirect to the new current lead page of the lead we just generated. 
-        window.location.replace(`/clients/${req.params.id}`);
-      })
-      // If there's an error, handle it by throwing up a bootstrap alert
-      .catch(handleLoginErr);
-  }
-
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
-  */
 });
 
 </script>

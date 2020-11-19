@@ -1,8 +1,11 @@
-<nav class="navbar navbar-default">
+<nav class="navbar cst-nav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
+      <a class="navbar-brand links" href="/logout">
         Logout
+      </a>
+      <a class="navbar-brand links" href="/clients">
+        Back
       </a>
     </div>
   </div>
@@ -16,7 +19,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
-            <h2>Client Information</h2>
+            <div class="text-center">
+              <h2>Client Information</h2>
+            </div>
             <form class="login">
               <div class="form-group">
                 <label for="exampleInputEmail1">First Name</label>
@@ -51,20 +56,27 @@
                 <label for="exampleInputPassword1">Follow Up</label>
                 <input type="text" id="datepicker" class="form-control" placeholder="Follow Up"{{last_follow_up}}>
               </div>
+              <div class="text-center">
+                <h2>Comments</h2>
+              </div>
               {{#each comments}}
                 <div class="form-group">
                   <label for="comments">Comment</label>
                   <input type="text" class="comments form-control" placeholder="Comments" value="{{comment}}">
-                  <button data-commentid="{{this.id}}" class="delete">Delete</button>
+                  <br>
+                  <button data-commentid="{{this.id}}" class="delete btn btn-danger">Delete</button>
                 </div>
               {{/each}}
               <div class="form-group">
                 <label for="exampleInputPassword1">New Comment</label>
                 <input type="text" id="comment" class="form-control" placeholder="Add new comment">
-                <button data-name="{{agent_name}}" id="comment-btn">Add</button>
+                <br>
+                <button data-name="{{agent_name}}" id="comment-btn" class="btn btn-primary">Add</button>
               </div>
                 <br>
-                <button id="update-btn" type="submit" class="btn btn-default">Update</button>
+                <div class="text-center">
+                  <button id="update-btn" type="submit" class="btn btn-primary">Update Client</button>
+                </div>
             </form>
             <br />
           </div>

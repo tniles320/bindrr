@@ -75,6 +75,7 @@ module.exports = function(app) {
       gender: req.body.gender,
       email: req.body.email,
       phone: req.body.phone,
+      last_follow_up: req.body.last_follow_up,
       AgentId: req.body.AgentId,
       CompanyId: req.body.CompanyId
     })
@@ -146,6 +147,15 @@ module.exports = function(app) {
     })
       .then(function(dbComment) {
         res.json(dbComment);
+      });
+  });
+
+  app.post("/api/companies", (req, res) => {
+    db.Company.create({
+      name: req.body.name
+    })
+      .then(function(dbCompany) {
+        res.json(dbCompany);
       });
   });
 

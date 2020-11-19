@@ -1,53 +1,68 @@
-<h1>Leads</h1>
+<nav class="navbar cst-nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand links" href="/logout">
+        Logout
+      </a>
+      <a class="navbar-brand links" href="/dashboard">
+        Back
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="text-center">
+  <h1>Leads</h1>
+</div>
 <table class="table">
+  <div class="text-center">
+    <button class="add-client btn btn-primary">Add New Client</button>
+  </div>
+  <thead>
+    <tr>
+      <th scope="col">Update Client</th>
+      <th scope="col">ID</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Last Follow Up</th>
+      <th scope="col">Agent</th>
 
-    <button class="add-client">Add New Client</button>
-    <thead>
-        <tr>
-            <th scope="col">Update Client</th>
-            <th scope="col">ID</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th scope="col">Last Follow Up</th>
-            <th scope="col">Agent</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each clients}}
+    {{!-- {{#if wants_follow_up}} --}}
 
-        </tr>
-    </thead>
-    <tbody>
-            {{#each clients}}
-            {{!-- {{#if wants_follow_up}} --}}
-
-        <tr>
-            <th>
-                <button data-id="{{id}}" class="update-client">Update</button>
-            </th>
-            <th scope="row">{{id}}</th>
-            <td>{{last_name}}</td>
-            <td>{{first_name}}</td>
-            <td>{{gender}}</td>
-            <td>{{phone}}</td>
-            <td>{{email}}</td>
-            <td>{{last_follow_up}}</td>
-            {{!-- //need to reference agent name // --}}
-            <td>{{AgentId}}</td>
-        </tr>
-         {{!-- {{/if}} --}}
-         {{/each}}
-    </tbody>
+    <tr>
+      <th>
+        <button data-id="{{id}}" class="update-client btn btn-primary">Update</button>
+      </th>
+      <th scope="row">{{id}}</th>
+      <td>{{last_name}}</td>
+      <td>{{first_name}}</td>
+      <td>{{gender}}</td>
+      <td>{{phone}}</td>
+      <td>{{email}}</td>
+      <td>{{last_follow_up}}</td>
+      {{!-- //need to reference agent name // --}}
+      <td>{{AgentId}}</td>
+    </tr>
+    {{!-- {{/if}} --}}
+    {{/each}}
+  </tbody>
 </table>
 
 <script type="text/javascript">
 
-$(".add-client").on("click", function(event) {
+  $(".add-client").on("click", function (event) {
     window.location.replace(`/add-client`);
-});
+  });
 
-$(".update-client").on("click", function(event) {
+  $(".update-client").on("click", function (event) {
     const id = $(this).data("id");
     window.location.replace(`/clients/${id}`);
-});
+  });
 </script>
-
