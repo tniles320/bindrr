@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Bindrrr</title>
+  <title>Bindrr</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS -->
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -22,32 +22,17 @@
           <div class="col-md-12 wow fadeIn mb-3">
             <div class="welcome">
             <h5>The only site you need to stay at the top of your game.</h5>
-           <h1 class="title"> <img src="/assets/img/logo.png" style='width:6%; border:0'> Bindrrr</h1>
+           <h1 class="title"> <img src="assets/img/logo.png" style='width:6%; border:"0"'> Bindrr</h1>
             <h5>---Get Organized Today!</h5>
-            <button class="signup btn waves-effect waves-light light-green accent-4"> SIGN UP
-              <i class="material-icons right"></i>
-            </button>
-            <button class="login btn waves-effect waves-light light-green-text transparent">LOGIN
-              <i class="material-icons right"></i>
+            <a class="waves-effect waves-light btn light-green accent-4" href="/signup">Sign Up</a>
+            <a class="waves-effect waves-light btn light-green-text transparent" href="/login">Login</a>
           </div>
+          </div> 
           </div>
-                  
-          </div>
-        </div>
+        </div>  
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script>
-    $(".signup").on("click", function(event) {
-      event.preventDefault()
-      window.location.replace("/signup");
-    })
-    $(".login").on("click", function(event) {
-      event.preventDefault()
-      window.location.replace("/login");
-    })
-  </script>
 
 </body>
 
