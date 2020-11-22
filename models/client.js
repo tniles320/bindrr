@@ -1,13 +1,14 @@
+/* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
   const Client = sequelize.define("Client", {
-    first_name : {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    last_name : {
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -24,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     gender: {
       type: DataTypes.STRING,
