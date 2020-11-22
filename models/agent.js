@@ -1,16 +1,17 @@
+/* eslint-disable camelcase */
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 const bcrypt = require("bcrypt");
 
 module.exports = function(sequelize, DataTypes) {
   const Agent = sequelize.define("Agent", {
-    first_name : {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    last_name : {
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

@@ -1,17 +1,17 @@
+/* eslint-disable camelcase */
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function(app) {
-
   //test get route
   app.get("/api/companies", (req, res) => {
-    db.Company.findAll({}).then(function(dbCompany) {
+    db.Company.findAll({}).then(dbCompany => {
       res.json(dbCompany);
     });
   });
   app.get("/api/agents", (req, res) => {
-    db.Agent.findAll({}).then(function(dbAgent) {
+    db.Agent.findAll({}).then(dbAgent => {
       res.json(dbAgent);
     });
   });
@@ -32,8 +32,8 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
     db.Agent.create({
-      first_name : req.body.first_name,
-      last_name : req.body.last_name,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password,
       CompanyId: req.body.CompanyId
@@ -52,19 +52,19 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
-  app.get("/api/clients", (req, res) => { 
-    if(req.user){
+  app.get("/api/clients", (req, res) => {
+    if (req.user) {
       db.Client.findAll({
         where: {
           AgentId: req.user.id
         }
-      }).then(function(dbClient) {
+      }).then(dbClient => {
         res.json(dbClient);
       });
     } else {
       res.status(400).json({
-        forbidden : true
-      })
+        forbidden: true
+      });
     }
   });
 
@@ -78,43 +78,44 @@ module.exports = function(app) {
       last_follow_up: req.body.last_follow_up,
       AgentId: req.body.AgentId,
       CompanyId: req.body.CompanyId
-    })
-      .then(function(dbClient) {
-        res.json(dbClient);
-      });
+    }).then(dbClient => {
+      res.json(dbClient);
+    });
   });
 
-  app.get("/api/clients/:id", (req, res) => { 
-    if(req.user){
+  app.get("/api/clients/:id", (req, res) => {
+    if (req.user) {
       db.Client.findOne({
         where: {
           id: req.params.id
         }
-      }).then(function(dbClient) {
+      }).then(dbClient => {
         res.json(dbClient);
       });
     } else {
       res.status(400).json({
-        forbidden : true
-      })
+        forbidden: true
+      });
     }
   });
-  
+
   app.put("/api/clients/:id", (req, res) => {
-    db.Client.update({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      gender: req.body.gender,
-      email: req.body.email,
-      phone: req.body.phone,
-    },
-    {
-      where: {
-      id: req.params.id
-    }
-    }).then(function(dbClient) {
-        res.json(dbClient)
-      })
+    db.Client.update(
+      {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        gender: req.body.gender,
+        email: req.body.email,
+        phone: req.body.phone
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    ).then(dbClient => {
+      res.json(dbClient);
+    });
   });
 
   app.post("/api/comments", (req, res) => {
@@ -123,10 +124,9 @@ module.exports = function(app) {
       author: req.body.author,
       comment: req.body.comment,
       ClientId: req.body.ClientId
-    })
-      .then(function(dbComment) {
-        res.json(dbComment);
-      });
+    }).then(dbComment => {
+      res.json(dbComment);
+    });
   });
 
   app.get("/api/comments/:id", (req, res) => {
@@ -134,7 +134,7 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    }).then(function(dbComment) {
+    }).then(dbComment => {
       res.json(dbComment);
     });
   });
@@ -144,19 +144,17 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    })
-      .then(function(dbComment) {
-        res.json(dbComment);
-      });
+    }).then(dbComment => {
+      res.json(dbComment);
+    });
   });
 
   app.post("/api/companies", (req, res) => {
     db.Company.create({
       name: req.body.name
-    })
-      .then(function(dbCompany) {
-        res.json(dbCompany);
-      });
+    }).then(dbCompany => {
+      res.json(dbCompany);
+    });
   });
 
   // Route for getting some data about our user to be used client side

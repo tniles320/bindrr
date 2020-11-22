@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 $(document).ready(() => {
   // Getting references to our form and input
   const signUpForm = $("form.signup");
@@ -18,11 +19,23 @@ $(document).ready(() => {
       company: parseInt(companyInput.val())
     };
 
-    if (!userData.first || !userData.last || !userData.email || !userData.password || !userData.company) {
+    if (
+      !userData.first ||
+      !userData.last ||
+      !userData.email ||
+      !userData.password ||
+      !userData.company
+    ) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.first, userData.last, userData.email, userData.password, userData.company);
+    signUpUser(
+      userData.first,
+      userData.last,
+      userData.email,
+      userData.password,
+      userData.company
+    );
     firstInput.val("");
     lastInput.val("");
     emailInput.val("");
